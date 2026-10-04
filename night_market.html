@@ -77,23 +77,33 @@ button{font-family:inherit;-webkit-appearance:none;appearance:none;cursor:pointe
 @keyframes hudUp{0%,50%{color:#fff;background:rgba(232,192,96,.45)}100%{color:var(--g1);background:#0000}}
 @media (prefers-reduced-motion:reduce){#hud .hi.up b{animation:none}}
 
-/* ===== Kho Đồ: danh sách vật phẩm (chỉ xem) ===== */
+/* ===== Kho Đồ: lưới 2 cột + popup chi tiết (chỉ xem) ===== */
 #mb.inv{width:min(94vw,520px);max-width:94vw;padding:calc(5*var(--u))}
 #mb.inv .mi{display:none}
-#invl{margin-top:calc(3*var(--u));max-height:min(380px,calc(100vh - 190px));overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;text-align:left;display:flex;flex-direction:column;gap:calc(2*var(--u));padding-right:4px;scrollbar-width:thin;scrollbar-color:var(--g3) #120a1e}
-#invl::-webkit-scrollbar{width:6px}#invl::-webkit-scrollbar-thumb{background:var(--g3)}#invl::-webkit-scrollbar-track{background:#120a1e}
+#invl,#invd{margin-top:calc(3*var(--u));max-height:min(380px,calc(100vh - 190px));overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;-webkit-overflow-scrolling:touch;text-align:left;padding-right:4px;scrollbar-width:thin;scrollbar-color:var(--g3) #120a1e}
+#invl::-webkit-scrollbar,#invd::-webkit-scrollbar{width:6px}#invl::-webkit-scrollbar-thumb,#invd::-webkit-scrollbar-thumb{background:var(--g3)}#invl::-webkit-scrollbar-track,#invd::-webkit-scrollbar-track{background:#120a1e}
 .inv-h{position:sticky;top:0;z-index:1;padding:calc(1.5*var(--u)) calc(2*var(--u));background:#2a1a3a;color:var(--g2);font-weight:700;font-size:clamp(11px,3vw,13px);border-bottom:2px solid #120a1e}
 .inv-e{padding:calc(8*var(--u)) 0;text-align:center;font-weight:700;font-size:clamp(14px,3.4vw,17px);text-shadow:2px 2px 0 var(--ol)}
-.inv-r{display:flex;gap:calc(3*var(--u));align-items:center;padding:calc(2*var(--u));background:rgba(0,0,0,.28);border:2px solid #120a1e;box-shadow:inset 2px 2px 0 rgba(255,255,255,.07)}
-.inv-i{flex:none;width:calc(12*var(--u));height:calc(12*var(--u));display:flex;align-items:center;justify-content:center;font-size:26px}
+.inv-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(2*var(--u));margin-top:calc(2*var(--u))}
+.inv-t{display:flex;align-items:center;gap:calc(2*var(--u));min-width:0;padding:calc(1.5*var(--u));background:rgba(0,0,0,.28);border:2px solid #120a1e;box-shadow:inset 2px 2px 0 rgba(255,255,255,.07);cursor:pointer;outline:0}
+.inv-t:hover,.inv-t:focus-visible{background:rgba(232,192,96,.14);border-color:var(--g2)}
+.inv-t:active{transform:translateY(2px)}
+.inv-i{flex:none;width:calc(13*var(--u));height:calc(13*var(--u));display:flex;align-items:center;justify-content:center;font-size:26px}
 .inv-i img{width:100%;height:100%;display:block}
 .inv-b{min-width:0;flex:1}
-.inv-n{display:flex;flex-wrap:wrap;align-items:center;gap:4px 8px;font-size:clamp(13px,3.4vw,15px);line-height:1.25}
-.inv-n b{text-shadow:1px 1px 0 var(--ol);word-break:break-word}
-.inv-q{padding:0 5px;font-size:clamp(10px,2.7vw,12px);font-weight:700;color:#fff;text-shadow:1px 1px 0 var(--ol);box-shadow:0 0 0 2px var(--ol)}
-.inv-c{font-weight:700;color:var(--g1);font-size:clamp(11px,3vw,13px)}
-.inv-s{margin-top:3px;color:#e6d6b0;font-size:clamp(11px,2.9vw,12.5px);line-height:1.35}
-.inv-s i{font-style:normal;white-space:nowrap}
+.inv-tn{font-weight:700;font-size:clamp(12px,3.1vw,14px);line-height:1.2;text-shadow:1px 1px 0 var(--ol);overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;word-break:break-word}
+.inv-q{display:inline-block;margin-top:3px;padding:0 5px;font-size:clamp(10px,2.7vw,12px);font-weight:700;color:#fff;text-shadow:1px 1px 0 var(--ol);box-shadow:0 0 0 2px var(--ol);white-space:nowrap}
+.inv-dh{display:flex;gap:calc(3*var(--u));align-items:center;padding:calc(2*var(--u));background:rgba(0,0,0,.28);border:2px solid #120a1e}
+.inv-di{flex:none;width:calc(20*var(--u));height:calc(20*var(--u));display:flex;align-items:center;justify-content:center;font-size:44px}
+.inv-di img{width:100%;height:100%;display:block}
+.inv-dn{font-weight:700;font-size:clamp(15px,3.8vw,19px);line-height:1.25;text-shadow:2px 2px 0 var(--ol);word-break:break-word}
+.inv-dl{display:grid;grid-template-columns:auto 1fr;margin-top:calc(2*var(--u))}
+.inv-k,.inv-v{padding:calc(1.6*var(--u)) calc(2*var(--u));border-bottom:2px solid #120a1e;font-size:clamp(12px,3.2vw,14px)}
+.inv-k{color:#e6d6b0}
+.inv-v{text-align:right;font-weight:700;color:var(--g1);text-shadow:1px 1px 0 var(--ol)}
+.inv-v small{font-weight:700;color:#e6d6b0;font-size:.85em}
+.inv-bar{height:7px;margin:3px 0 0 auto;width:min(100%,120px);background:#120a1e;box-shadow:0 0 0 2px var(--ol)}
+.inv-bar i{display:block;height:100%}
 </style>
 </head>
 <body>
@@ -678,7 +688,7 @@ const act=document.getElementById('act'),acs=document.getElementById('acs'),md=d
 let modal=false,actId=null;
 function invCleanup(){   /* dọn danh sách Kho Đồ khi popup đóng / popup khác mở */
   try{const I=window.__inv;if(I&&typeof I.stop==='function')I.stop()}catch(e){console.error('[Kho Đồ] lỗi khi dọn popup:',e)}
-  try{const l=document.getElementById('invl');if(l)l.remove();mb.classList.remove('inv')}catch(e){console.error('[Kho Đồ] lỗi khi dọn popup:',e)}
+  try{['invl','invd'].forEach(id=>{const l=document.getElementById(id);if(l)l.remove()});mb.classList.remove('inv')}catch(e){console.error('[Kho Đồ] lỗi khi dọn popup:',e)}
 }
 function closeModal(){invCleanup();modal=false;md.hidden=true}
 function openModal(text,btns,kind){
@@ -708,6 +718,28 @@ function openInventory(){
     if(list)invShowError(list,e);else console.error('[Kho Đồ] lỗi mở Kho Đồ:',e);
   }
 }
+/* chi tiết vật phẩm: cũng dùng openModal nội bộ; dữ liệu đọc lại trực tiếp từ G.inv theo chỉ số */
+function openInvItem(idx){
+  openModal('📦 CHI TIẾT VẬT PHẨM',[['← Kho Đồ',openInventory],['Đóng']]);
+  let box=null;
+  try{
+    mb.classList.add('inv');
+    box=document.createElement('div');box.id='invd';mb.insertBefore(box,ma);
+    const I=window.__inv;
+    if(!I||typeof I.detail!=='function')throw new Error('Module Kho Đồ chưa được nạp (window.__inv.detail không tồn tại)');
+    I.detail(box,idx);
+  }catch(e){
+    if(box)invShowError(box,e);else console.error('[Kho Đồ] lỗi mở chi tiết vật phẩm:',e);
+  }
+}
+mb.addEventListener('click',e=>{
+  try{const t=e.target&&e.target.closest?e.target.closest('.inv-t'):null;if(t&&modal)openInvItem(+t.dataset.i)}
+  catch(err){console.error('[Kho Đồ] lỗi khi bấm vật phẩm:',err)}
+});
+mb.addEventListener('keydown',e=>{
+  try{const t=e.target;if((e.key==='Enter'||e.key===' ')&&t&&t.classList&&t.classList.contains('inv-t')){e.preventDefault();e.stopPropagation();openInvItem(+t.dataset.i)}}
+  catch(err){console.error('[Kho Đồ] lỗi khi chọn vật phẩm bằng phím:',err)}
+});
 const SHOP_FILE = "index.html";
 const NIGHT_MARKET_FILE = "night_market.html";
 function backToShop(){
@@ -859,24 +891,24 @@ for(const k in SVGI)SVGI[k]=SVGI[k].replace(/(<svg[^>]*>)([\s\S]*)<\/svg>/,(m,a,
     try{const t=localStorage.getItem(TS_KEY);if(t!=null)return t;const r=localStorage.getItem(SAVE_KEY);return r==null?'-':'L'+r.length}catch(e){return'?'}
   }
 
-  function row(it,mk){
-    const r=el('div','inv-r'),ic=el('div','inv-i'),u=iconURL(it);
-    if(u){const im=new Image();im.alt='';im.src=u;ic.appendChild(im)}else ic.textContent=(typeof it.icon==='string'&&it.icon&&it.icon.codePointAt(0)<0xE000)?it.icon:'📦';
-    const bd=el('div','inv-b'),nm=el('div','inv-n');
-    nm.appendChild(el('b',null,String(it.name==null?'?':it.name)));
-    const q=el('span','inv-q');
-    if(!it.known){q.textContent='❔ Chưa thẩm định';q.style.background='#5a4a6a'}
-    else if(it.fake){q.textContent='⚠️ Giả';q.style.background='#a02020'}
-    else{const n=TN[Math.max(0,Math.min(5,tr(it)))];q.textContent=n[2]+' '+n[0];q.style.background=n[1]}
-    nm.appendChild(q);
-    nm.appendChild(el('span','inv-c',(+it.cond||0)+'%'));
-    const sub=el('div','inv-s'),rp=it.repairs|0;
-    const parts=[['Vốn '+fm(+it.cost||0)]];
-    if(it.cust)parts.push(['🧾 Khách gửi · phí '+fm(+it.fee||0)]);
-    else{const sell=it.price||r10(vis(it,mk)*1.15);parts.push(['Bán '+fm(sell)+(it.price||it.known?'':'*')])}
-    parts.push([rp===0?'✅ Chưa sửa':'🔧 Sửa '+rp+' lần']);
-    parts.forEach((p,k)=>{if(k)sub.appendChild(document.createTextNode(' · '));sub.appendChild(el('i',null,p[0]))});
-    bd.appendChild(nm);bd.appendChild(sub);r.appendChild(ic);r.appendChild(bd);return r;
+  const owned=it=>!!it&&typeof it==='object'&&!it.cust;     /* đồ khách gửi sửa (cust) không thuộc người chơi */
+  function rarity(it){
+    if(!it.known)return['❔ Chưa thẩm định','#5a4a6a'];
+    if(it.fake)return['⚠️ Giả','#a02020'];
+    let t=tr(it);if(!isFinite(t))t=0;
+    const n=TN[Math.max(0,Math.min(5,Math.round(t)))];return[n[2]+' '+n[0],n[1]];
+  }
+  function iconBox(it,cls){
+    const ic=el('div',cls),u=iconURL(it);
+    if(u){const im=new Image();im.alt='';im.src=u;ic.appendChild(im)}
+    else ic.textContent=(typeof it.icon==='string'&&it.icon&&it.icon.codePointAt(0)<0xE000)?it.icon:'📦';
+    return ic;
+  }
+  function badge(it){const r=rarity(it),q=el('span','inv-q',r[0]);q.style.background=r[1];return q}
+  function tile(it,i){
+    const t=el('div','inv-t');t.dataset.i=i;t.tabIndex=0;t.setAttribute('role','button');
+    const bd=el('div','inv-b');bd.appendChild(el('div','inv-tn',String(it.name==null?'?':it.name)));bd.appendChild(badge(it));
+    t.appendChild(iconBox(it,'inv-i'));t.appendChild(bd);return t;
   }
 
   let lastSig=null,timer=0;
@@ -886,23 +918,47 @@ for(const k in SVGI)SVGI[k]=SVGI[k].replace(/(<svg[^>]*>)([\s\S]*)<\/svg>/,(m,a,
     try{
       const d=readSave(),keep=list.scrollTop;list.textContent='';
       if(d.err||d.none){list.appendChild(el('div','inv-e',d.err?'📦 Không đọc được dữ liệu kho':'📦 Chưa có dữ liệu từ Tiệm'));return}
-      if(!d.inv.length){list.appendChild(el('div','inv-e','📦 Kho trống'));return}
-      list.appendChild(el('div','inv-h',d.inv.length+' món · chỉ xem'));
+      const tiles=[];
       d.inv.forEach((it,i)=>{
         if(!it||typeof it!=='object'){console.error('[Kho Đồ] G.inv['+i+'] không hợp lệ:',it);return}
-        try{list.appendChild(row(it,d.mk))}
-        catch(e){console.error('[Kho Đồ] lỗi render vật phẩm G.inv['+i+']:',e,it);list.appendChild(el('div','inv-e','⚠️ Không hiển thị được vật phẩm #'+(i+1)))}
+        if(!owned(it))return;                                   /* lọc đồ khách gửi sửa */
+        try{tiles.push(tile(it,i))}
+        catch(e){console.error('[Kho Đồ] lỗi render vật phẩm G.inv['+i+']:',e,it)}
       });
+      if(!tiles.length){list.appendChild(el('div','inv-e','📦 Kho trống'));return}
+      list.appendChild(el('div','inv-h',tiles.length+' món · chạm để xem chi tiết'));
+      const g=el('div','inv-g');tiles.forEach(t=>g.appendChild(t));list.appendChild(g);
       list.scrollTop=keep;
     }catch(e){
       console.error('[Kho Đồ] lỗi render Kho Đồ:',e);
       try{list.textContent='';list.appendChild(el('div','inv-e','📦 Không đọc được dữ liệu kho'))}catch(e2){console.error('[Kho Đồ] không thể hiển thị thông báo lỗi:',e2)}
     }
   }
+  function detail(box,idx){
+    const d=readSave();
+    if(d.err){box.appendChild(el('div','inv-e','📦 Không đọc được dữ liệu kho'));return}
+    if(d.none){box.appendChild(el('div','inv-e','📦 Chưa có dữ liệu từ Tiệm'));return}
+    const it=d.inv[idx];
+    if(!owned(it)){console.error('[Kho Đồ] G.inv['+idx+'] không còn là vật phẩm của người chơi:',it);box.appendChild(el('div','inv-e','📦 Vật phẩm không còn trong kho'));return}
+    const h=el('div','inv-dh'),hb=el('div','inv-b');
+    hb.appendChild(el('div','inv-dn',String(it.name==null?'?':it.name)));hb.appendChild(badge(it));
+    h.appendChild(iconBox(it,'inv-di'));h.appendChild(hb);box.appendChild(h);
+    const cond=Math.max(0,Math.min(100,+it.cond||0)),rp=it.repairs|0,sold=it.price||r10(vis(it,d.mk)*1.15);
+    const g=el('div','inv-dl');
+    const add=(k,v,extra)=>{g.appendChild(el('div','inv-k',k));const c=el('div','inv-v');if(typeof v==='string')c.textContent=v;else c.appendChild(v);if(extra)c.appendChild(extra);g.appendChild(c)};
+    const bar=el('div','inv-bar'),fill=el('i');fill.style.width=cond+'%';fill.style.background=cond>=70?'#3a9a4a':cond>=40?'#d0a020':'#c03a2a';bar.appendChild(fill);
+    add('Tình trạng',cond+'%',bar);
+    add('Giá vốn',fm(+it.cost||0));
+    const sv=el('span',null,fm(sold));if(!it.price&&!it.known){sv.appendChild(document.createTextNode(' '));sv.appendChild(el('small',null,'(ước tính)'))}
+    add('Giá bán',sv);
+    add('Số lần sửa',rp===0?'Chưa sửa':rp+' lần');
+    box.appendChild(g);
+  }
   /* API cho popup Kho Đồ (mở bằng openModal nội bộ của game, xem openInventory ở trên) */
   window.__inv={
     start(){lastSig=null;render(true);clearInterval(timer);timer=setInterval(()=>render(false),1000)},   /* tự cập nhật khi Tiệm đổi dữ liệu */
-    stop(){clearInterval(timer);timer=0}
+    stop(){clearInterval(timer);timer=0},
+    detail
   };
   addEventListener('storage',e=>{if(e.key===SAVE_KEY||e.key===TS_KEY||e.key===null)render(false)});
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)render(false)});
