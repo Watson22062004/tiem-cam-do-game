@@ -656,6 +656,7 @@ const SHOP_FILE = "index.html";
 const NIGHT_MARKET_FILE = "night_market.html";
 function backToShop(){
   try{if(typeof save==='function')save()}catch(e){}
+  try{sessionStorage.setItem("returnFromNightMarket","1")}catch(e){}
   location.href=SHOP_FILE;
 }
 function talk(n){const d=n.d,line=d.lines[n.li%d.lines.length];n.li++;n.nod=14;openModal(d.name+': “'+line+'”',[['Đóng']])}

@@ -845,7 +845,14 @@ function ovClose(){document.querySelectorAll('.ov').forEach(o=>o.remove())}
 function startG(){ovClose();let seen=0;try{seen=localStorage.getItem('tcd_intro')}catch(e){}if(seen)return;story(1)}
 const TS=[['Bấm 🚪 MỞ CỬA để bắt đầu ngày mới. Khách sẽ lần lượt vào tiệm.',0],['Khi khách bán đồ, bấm 🔎 Thẩm định rồi quét kính lúp từng ô để tìm hàng giả hoặc đồ hiếm.',0],['Trả giá: khách có thể chấp nhận ngay từ lần đầu nếu giá gần với mong muốn của họ.',0],['Vào 📦 Kho đặt giá và trưng bày để khách mua lại.',1],['Nhớ theo dõi 📅 thuế, giang hồ đòi bảo kê, và nâng cấp ở 🏗️. Hết tiền sẽ thua!',6]];
 function tut(i){document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('hl'));let t=$('#tut');if(t)t.remove();if(i>=TS.length)return;const b=document.querySelectorAll('#nav button')[TS[i][1]];if(b)b.classList.add('hl');t=document.createElement('div');t.id='tut';t.innerHTML=`<b>Hướng dẫn ${i+1}/${TS.length}</b><br>${TS[i][0]}<br><button onclick="tut(${i+1})">Tiếp</button><button class=red onclick="tut(99)">Bỏ qua</button>`;document.body.appendChild(t)}
-showTitle();
+var _rfNM=false;
+try{_rfNM=sessionStorage.getItem("returnFromNightMarket")==="1";if(_rfNM)sessionStorage.removeItem("returnFromNightMarket")}catch(e){}
+if(_rfNM){
+  /* từ Chợ Đêm về: vào thẳng game (hoãn 1 nhịp để contG chạy sau khi mọi bản vá startG đã nạp) */
+  setTimeout(contG,0);
+}else{
+  showTitle();
+}
 
 rd();requestAnimationFrame(loop);
 
